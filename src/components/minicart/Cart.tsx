@@ -1,10 +1,8 @@
 import CartItem from "./CartItem";
-
-import useFromStore from "../../hook/useFormStore";
 import useCartStore from "../../stores/useCartStore";
 
 function Cart() {
-  const cart = useFromStore(useCartStore, (state) => state.cart);
+  const cart = useCartStore((state) => state.cart);
 
   let total = 0;
   if (cart) {
@@ -16,15 +14,19 @@ function Cart() {
 
   return (
     <section>
-      <h3 className="text-2xl font-bold mb-4">Shopping Cart</h3>
-      <ul>
+      <div className="flex justify-center items-center">
+        <h3 className="text-2xl font-bold mb-4 ">Shopping Cart</h3>
+      </div>
+      <ul className="">
         {cart?.map((product) => (
           <CartItem key={product.id} product={product} />
         ))}
       </ul>
       <div className="flex justify-between items-center mt-4">
-        <span className="text-lg font-bold">Total:</span>
-        <span className="text-xl font-bold">${total.toFixed(2)}</span>
+        <span className="text-lg font-bold">Total Amount :</span>
+        <span className="text-xl font-bold text-red-700">
+          $ {total.toFixed(2)}
+        </span>
       </div>
     </section>
   );

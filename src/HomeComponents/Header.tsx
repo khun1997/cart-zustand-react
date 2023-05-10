@@ -1,4 +1,3 @@
-import useFromStore from "../hook/useFormStore";
 import useCartStore from "../stores/useCartStore";
 import { FaCartPlus } from "react-icons/fa";
 
@@ -7,7 +6,7 @@ interface Props {
 }
 
 export default function Header({ onCartIconClick }: Props) {
-  const cart = useFromStore(useCartStore, (state) => state.cart);
+  const cart = useCartStore((state) => state.cart);
 
   return (
     <header className="bg-gray-900 text-white py-4 flex items-center justify-between h-14 sticky top-0 z-10">
